@@ -36,14 +36,14 @@ app.use(cors());
 app.use(express.json());
 app.use(bodyParser.urlencoded({extended:true}));
 
-app.get("/api/getIDStrings", (req,res) => {
+app.get("/getIDStrings", (req,res) => {
 	getIDStrings().then(function(result){
 		console.log(result);
 		res.send(result);
 	});
 });
 
-app.post("/api/insertScores", (req,res) => {
+app.post("/insertScores", (req,res) => {
 	console.log("entered");
 	const section1_h = req.body.section1_h;
 	const section1_c = req.body.section1_c;
@@ -74,7 +74,7 @@ app.post("/api/insertScores", (req,res) => {
 	insertScores(params);
 });
 
-app.post("/api/insertSystemEngagement", (req,res) => {
+app.post("/insertSystemEngagement", (req,res) => {
 	const idString = req.body.idString;
 	const unscored_data = req.body.json;
 	var temp = unscored_data['Food/Housing/Child Welfare/Foster'];
@@ -226,7 +226,7 @@ app.post("/api/insertSystemEngagement", (req,res) => {
 	insertSystemEngagement(params);
 });
 
-app.post("/api/insertBehaviors", (req,res) => {
+app.post("/insertBehaviors", (req,res) => {
 	const idString = req.body.idString;
 	const data = req.body.json;
 	var toPass = [idString];
@@ -270,7 +270,7 @@ app.post("/api/insertBehaviors", (req,res) => {
 	insertBehaviors(params);
 });
 
-app.post("/api/insertPsych", (req,res) => {
+app.post("/insertPsych", (req,res) => {
 	const idString = req.body.idString;
 	const data = req.body.json;
 	var toPass = [idString];
@@ -304,7 +304,7 @@ app.post("/api/insertPsych", (req,res) => {
 	insertPsych(params);
 });
 
-app.post("/api/insertPhys", (req,res) => {
+app.post("/insertPhys", (req,res) => {
 	const idString = req.body.idString;
 	const data = req.body.json;
 	var toPass = [idString];
